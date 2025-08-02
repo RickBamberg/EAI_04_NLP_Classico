@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Análise de sentimento do produto</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Análise de sentimento do produto</h1>
+        
+        {% if error %}
+        <div class="alert alert-danger">
+            {{ error }}
+        </div>
+        {% endif %}
+        
+        <form method="POST" action="{{ url_for('predict') }}">
+            <div class="form-group">
+                <label for="message">Qual é a sua opinião sobre o produto?</label>
+                <textarea name="message" id="message" rows="5" cols="50" placeholder="Digite sua opinião aqui..." required></textarea>
+            </div>
+            
+            <button type="submit">Verificar Opinião</button>
+        </form>
+    </div>
+</body>
+</html>

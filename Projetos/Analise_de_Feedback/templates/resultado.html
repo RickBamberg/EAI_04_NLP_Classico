@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resultado da Análise de Feedback</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container compact">
+        <h1>Resultado da Análise</h1>
+        
+        <!-- SEÇÃO 1: A OPINIÃO ORIGINAL -->
+        <div class="result-section compact">
+            <h3>Sua opinião:</h3>
+            <p class="review-text">"{{ review }}"</p>
+        </div>
+        
+        <!-- SEÇÃO 2: RESULTADO DO MODELO DE SENTIMENTO -->
+        <div class="result-section compact">
+            <h3>Análise de Sentimento</h3>
+            {% if sentiment_prediction == 'Positivo' %}
+                <div class="alert alert-success compact">
+                    <strong>✅ Sentimento: {{ sentiment_prediction }}</strong>
+                </div>
+            {% else %}
+                <div class="alert alert-danger compact">
+                    <strong>❌ Sentimento: {{ sentiment_prediction }}</strong>
+                </div>
+            {% endif %}
+            <p class="confidence-text">Confiança do modelo: <strong>{{ sentiment_confidence }}%</strong></p>
+        </div>
+        
+        <!-- SEÇÃO 3: RESULTADO DO MODELO DE SUGESTÃO -->
+        <div class="result-section compact">
+            <h3>Análise de Intenção</h3>
+            {% if is_suggestion == 'Sim' %}
+                <div class="alert alert-info compact">
+                    <strong>💡 Contém uma Sugestão: {{ is_suggestion }}</strong>
+                </div>
+            {% else %}
+                <div class="alert alert-neutral compact">
+                    <strong>📄 Opinião/Declaração: {{ is_suggestion }}</strong>
+                </div>
+            {% endif %}
+            <p class="confidence-text">Confiança do modelo: <strong>{{ suggestion_confidence }}%</strong></p>
+        </div>
+        
+        <!-- SEÇÃO 4: AÇÕES -->
+        <div class="actions compact">
+            <a href="{{ url_for('home') }}" class="button">🔄 Nova Análise</a>
+        </div>
+    </div>
+</body>
+</html>
