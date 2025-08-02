@@ -58,8 +58,8 @@ O projeto foi desenvolvido em duas etapas principais: preparação dos dados e c
 
 **2. Clone o Repositório:**
 
-git clone https://github.com/[SEU-USUARIO-GITHUB]/[NOME-DO-REPOSITORIO].git
-cd [NOME-DO-REPOSITORIO]
+git clone https://github.com/RickBamberg/Sistema_de_Busca-Inteligente_para_FAQs.git
+cd Sistema_de_Busca-Inteligente_para_FAQs
 
 **3. Crie e Ative o Ambiente Virtual:**
 
