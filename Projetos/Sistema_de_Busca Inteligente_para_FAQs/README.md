@@ -62,20 +62,27 @@ git clone https://github.com/RickBamberg/Sistema_de_Busca-Inteligente_para_FAQs.
 cd Sistema_de_Busca-Inteligente_para_FAQs
 
 **3. Crie e Ative o Ambiente Virtual:**
+```bash
 
-* Cria o ambiente a partir do Python 3.9 (ou outra versão que preferir)
+# Cria o ambiente a partir do Python 3.9 (ou outra versão que preferir)
 conda create --name faq_env python=3.9
 
+```
+
 * Ativa o ambiente recém-criado
+```bash
 conda activate faq_env
+```
 
 **4. Instale as Dependências:**
-
+```bash
 pip install -r requirements.txt
+```
 
 **5. Execute a Aplicação Flask:**
-
+```bash
 python app.py
+```
 
 **6. Acesse no Navegador:**
 
