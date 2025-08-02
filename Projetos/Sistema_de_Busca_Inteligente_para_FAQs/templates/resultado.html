@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados da Busca - FAQ</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style1.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>📋 Resultados da Busca no FAQ</h1>
+        
+        <div class="user-question">
+            <h3>🤔 Sua pergunta:</h3>
+            <p>"{{ pergunta_usuario }}"</p>
+        </div>
+        
+        {% if resultados and total_resultados > 0 %}
+            <div class="results-header">
+                <h2>✨ Encontramos {{ total_resultados }} resposta(s) similar(es):</h2>
+            </div>
+            
+            {% for resultado in resultados %}
+            <div class="result-item">
+                <div class="result-header">
+                    <span class="result-position">{{ resultado.posicao }}º lugar</span>
+                    <span class="similarity-score">{{ resultado.similaridade }} de similaridade</span>
+                </div>
+                
+                <div class="faq-question">
+                    <h4>❓ Pergunta do FAQ:</h4>
+                    <p>{{ resultado.pergunta }}</p>
+                </div>
+                
+                <div class="faq-answer">
+                    <h4>✅ Resposta:</h4>
+                    <p>{{ resultado.resposta }}</p>
+                </div>
+            </div>
+            {% endfor %}
+            
+        {% else %}
+            <div class="no-results">
+                <h3>😔 Nenhum resultado encontrado</h3>
+                <p>Não conseguimos encontrar perguntas similares no nosso FAQ.</p>
+                <p>Tente reformular sua pergunta ou usar palavras-chave diferentes.</p>
+            </div>
+        {% endif %}
+        
+        <div class="navigation">
+            <a href="{{ url_for('home') }}" class="btn btn-primary">🔍 Nova Busca</a>
+        </div>
+    </div>
+</body>
+</html>

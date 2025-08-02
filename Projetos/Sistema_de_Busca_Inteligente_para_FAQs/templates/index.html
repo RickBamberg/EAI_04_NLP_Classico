@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Busca Inteligente para FAQs</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 Sistema de Busca Inteligente para FAQs</h1>
+        
+        <div class="instructions">
+            <h3>Como funciona:</h3>
+            <p>Digite sua dúvida no campo abaixo e nosso sistema irá buscar as perguntas mais similares no FAQ, retornando as respostas mais relevantes para você.</p>
+        </div>
+        
+        {% if error %}
+        <div class="alert alert-danger">
+            <strong>⚠️ Atenção:</strong> {{ error }}
+        </div>
+        {% endif %}
+        
+        <form method="POST" action="{{ url_for('predict') }}">
+            <div class="form-group">
+                <label for="message">💬 Qual é a sua dúvida?</label>
+                <textarea 
+                    name="message" 
+                    id="message" 
+                    rows="4" 
+                    placeholder="Exemplo: Como faço para redefinir minha senha?" 
+                    required
+                ></textarea>
+            </div>
+            
+            <button type="submit">🔍 Buscar no FAQ</button>
+        </form>
+    </div>
+</body>
+</html>
